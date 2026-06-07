@@ -1,4 +1,4 @@
-/* 1. 브라우저 기본 여백 초기화 */
+/* 전체 기본 여백 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Malgun Gothic', sans-serif;
-    background-color: #1a1c23; /* 메인 페이지와 통일된 다크 배경 */
+    background-color: #1a1c23; /* 메인 화면과 대칭되는 세련된 다크 배경 */
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -15,7 +15,7 @@ body {
     align-items: center;
 }
 
-/* 2. 상단 네비게이션 헤더 바 */
+/* 상단 헤더 영역 스타일 */
 header {
     width: 100%;
     max-width: 800px;
@@ -32,7 +32,7 @@ header h1 {
     color: #e0e0e0;
 }
 
-/* 3. 메인으로 돌아가는 흰색 알약 모양 버튼 */
+/* 깔끔한 흰색 알약 모양의 '뒤로가기' 버튼 */
 .back-btn {
     text-decoration: none;
     color: #1a1c23;
@@ -46,10 +46,10 @@ header h1 {
 
 .back-btn:hover {
     background-color: #dddddd;
-    transform: translateX(-3px); /* 마우스를 올리면 왼쪽으로 살짝 움직이는 효과 */
+    transform: translateX(-3px); /* 마우스를 올리면 왼쪽으로 살짝 미끄러지는 피드백 효과 */
 }
 
-/* 4. [중요] sketch.js 캔버스를 브라우저 한가운데에 가두는 공간 설정 */
+/* p5.js 캔버스를 화면 정중앙에 배치하는 컨테이너 */
 #canvas-container {
     flex: 1;
     display: flex;
@@ -59,9 +59,9 @@ header h1 {
     width: 100%;
 }
 
-/* 5. p5.js가 실행되면서 생성되는 캔버스 박스 자체의 스타일 */
+/* p5.js가 주입하는 canvas 그래픽 자체의 레이아웃 스타일 디자인 */
 canvas {
     display: block;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6); /* 작품 주변에 은은한 그림자 효과 */
-    border-radius: 10px; /* 캔버스 각진 모서리를 부드럽게 깎음 */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* 창문 프레임에 입체감을 주는 깊은 그림자 */
+    border-radius: 8px; /* 아트웍 외곽 모서리를 살짝 라운딩 처리 */
 }
