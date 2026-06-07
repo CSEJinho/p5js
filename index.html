@@ -1,47 +1,116 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p5.js 작품 모음</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>백진호의 p5.js 작품</h1>
-        <p>아래 링크를 클릭하여 다양한 p5.js 프로그램을 감상하세요.</p>
-    </header>
+/* 1. 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <section id="projects">
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
 
-        <div class="projects">
-            <a href="sample1/index.html">
-                <strong>과제 1. 추상화 그리기</strong>
-                <p>이 프로그램은 창문 속의 밤풍경을 다양한 도형을 통해서 묘사했습니다.</p>        
-            </a>
-        </div>
-        
-        <div class="projects">
-            <a href="sample4/index.html">
-                <strong>과제 4. 추상화에 시간 부여하기</strong>
-                <p>이 프로그램은 달이 지고 해가 뜨는 장면을 연출하였습니다.</p>        
-            </a>
-        </div>
+    /* ★ 알록달록 은은하게 움직이는 오로라 그라데이션 배경 */
+    background: linear-gradient(125deg, #2c1a4d, #1a3c5c, #134e4a, #4c1d39);
+    background-size: 400% 400%;
+    animation: auroraBackground 15s ease infinite;
+}
 
-        <div class="project">
-            <a href="sample2/index.html">
-                <strong>과제 2. 캐릭터 그리기</strong>
-                <p>이 프로그램은 나의 모습을 다양한 도형을 사용해 그려보았습니다.</p>
-            </a>
-        </div>
+/* 오로라를 움직이게 만드는 애니메이션 뼈대 */
+@keyframes auroraBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        <div class="projects">
-            <a href="sample3/index.html">
-                <strong>과제 3. 움직이는 캐릭터 그리기</strong>
-                <p>이 프로그램은 마우스의 움직임에 따라 변화하는 나의 얼굴을 그려보았습니다.</p>        
-            </a>
-        </div>
-        
-    </section>
-</body>
-</html>
+/* 2. 상단 헤더 타이틀 영역 스타일 */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    /* 글자에도 은은한 광채 효과 */
+    text-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #b3c5d7;
+}
+
+/* 3. 과제 카드들을 감싸는 격자(Grid) 배치 레이아웃 */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 격자로 배열 */
+    gap: 25px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* 4. 과제 카드 스타일 (보내주신 HTML의 .projects와 .project 둘 다 지원) */
+.projects, .project {
+    background: rgba(255, 255, 255, 0.05); /* 투명한 유리 같은 느낌 연출 */
+    backdrop-filter: blur(8px); /* 뒷 배경을 살짝 흐리게 해서 고급스럽게 만듦 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.3s, 
+                border-color 0.3s;
+}
+
+/* 카드 내부 링크 전체 영역 지정 */
+.projects a, .project a {
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+    color: #ffffff;
+    height: 100%;
+}
+
+/* 5. 카드에 마우스를 올렸을 때(Hover) 생동감 넘치는 반응 효과 */
+.projects:hover, .project:hover {
+    transform: translateY(-8px); /* 카드가 위로 슥 올라옴 */
+    border-color: rgba(255, 255, 255, 0.3);
+    /* 알록달록 배경과 어우러지는 네온 광채 효과 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 
+                0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* 카드 제목 스타일 */
+.projects strong, .project strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #e2e8f0;
+    transition: color 0.2s;
+}
+
+/* 호버 시 제목 색상이 밝게 빛남 */
+.projects:hover strong, .project:hover strong {
+    color: #6366f1; /* 은은한 네온 블루 퍼플 */
+}
+
+/* 카드 설명글 스타일 */
+.projects p, .project p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #94a3b8;
+}
+
+/* 반응형 레이아웃: 화면이 작은 모바일에서는 1열로 세로 정렬 */
+@media (max-width: 768px) {
+    #projects {
+        grid-template-columns: 1fr;
+    }
+}
