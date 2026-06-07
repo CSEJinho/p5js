@@ -10,10 +10,11 @@ let showR11=true, showR12=true, showR13=true, showR14=true;
 let showR15=true, showR16=true;
 
 function setup() {
-  createCanvas(600, 400);
-  saveGif('dramatic_sunrise_loop.gif', 6);
+  let canvas = createCanvas(600, 400);
+  canvas.parent('canvas-container');
+  
+  // saveGif('dramatic_sunrise_loop.gif', 6); 
 }
-
 function draw() {
 
   let totalFrames = 360; 
