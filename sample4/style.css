@@ -1,66 +1,67 @@
-/* 전체 기본 스타일 초기화 */
+/* 1. 브라우저 기본 여백 초기화 */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Malgun Gothic', sans-serif;
-  background-color: #1a1c23; /* 어두운 배경으로 작품 강조 */
-  color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    font-family: 'Malgun Gothic', sans-serif;
+    background-color: #1a1c23; /* 메인 페이지와 통일된 다크 배경 */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* 상단 헤더 및 버튼 스타일 */
+/* 2. 상단 네비게이션 헤더 바 */
 header {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }
 
 header h1 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #e0e0e0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #e0e0e0;
 }
 
-/* 뒤로가기 버튼 스타일 */
+/* 3. 메인으로 돌아가는 흰색 알약 모양 버튼 */
 .back-btn {
-  text-decoration: none;
-  color: #1a1c23;
-  background-color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: #1a1c23;
+    background-color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .back-btn:hover {
-  background-color: #dddddd;
-  transform: translateX(-3px); /* 살짝 왼쪽으로 움직이는 효과 */
+    background-color: #dddddd;
+    transform: translateX(-3px); /* 마우스를 올리면 왼쪽으로 살짝 움직이는 효과 */
 }
 
-/* p5.js 캔버스 배치 영역 */
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* 4. [중요] sketch.js 캔버스를 브라우저 한가운데에 가두는 공간 설정 */
+#canvas-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
 }
 
-/* p5.js가 생성하는 캔버스 자체 스타일 */
+/* 5. p5.js가 실행되면서 생성되는 캔버스 박스 자체의 스타일 */
 canvas {
-  display: block;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* 캔버스 주변 그림자 효과 */
-  border-radius: 8px; /* 모서리 부드럽게 */
+    display: block;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6); /* 작품 주변에 은은한 그림자 효과 */
+    border-radius: 10px; /* 캔버스 각진 모서리를 부드럽게 깎음 */
 }
