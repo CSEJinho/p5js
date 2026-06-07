@@ -1,10 +1,11 @@
-/* 1. 기본 스타일 초기화 */
+/* 1. 기본 여백 초기화 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 2. 전체 배경 - 보내주신 코드 기준에 알록달록 오로라 무빙만 추가 */
 body {
     font-family: 'Malgun Gothic', sans-serif;
     color: #ffffff;
@@ -14,103 +15,77 @@ body {
     align-items: center;
     padding: 40px 20px;
 
-    /* ★ 알록달록 은은하게 움직이는 오로라 그라데이션 배경 */
+    /* 은은하게 찰랑거리는 알록달록 오로라 배경 */
     background: linear-gradient(125deg, #2c1a4d, #1a3c5c, #134e4a, #4c1d39);
     background-size: 400% 400%;
     animation: auroraBackground 15s ease infinite;
 }
 
-/* 오로라를 움직이게 만드는 애니메이션 뼈대 */
 @keyframes auroraBackground {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 2. 상단 헤더 타이틀 영역 스타일 */
+/* 3. 상단 헤더 영역 */
 header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 12px;
-    /* 글자에도 은은한 광채 효과 */
-    text-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
 header p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #b3c5d7;
 }
 
-/* 3. 과제 카드들을 감싸는 격자(Grid) 배치 레이아웃 */
+/* 4. 프로젝트 섹션 컨테이너 */
 #projects {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열 격자로 배열 */
-    gap: 25px;
     width: 100%;
-    max-width: 900px;
+    max-width: 700px; /* 카드가 너무 퍼지지 않게 잡아주는 안정적인 너비 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 카드와 카드 사이의 일정한 간격 */
 }
 
-/* 4. 과제 카드 스타일 (보내주신 HTML의 .projects와 .project 둘 다 지원) */
+/* 5. 진호 님 HTML의 .projects와 .project 클래스 모두 깨짐 없이 일치화 */
 .projects, .project {
-    background: rgba(255, 255, 255, 0.05); /* 투명한 유리 같은 느낌 연출 */
-    backdrop-filter: blur(8px); /* 뒷 배경을 살짝 흐리게 해서 고급스럽게 만듦 */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.3s, 
-                border-color 0.3s;
+    background: rgba(255, 255, 255, 0.07); /* 반투명한 세련된 카드 배경 */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
-/* 카드 내부 링크 전체 영역 지정 */
+/* 카드 내부 링크 및 텍스트 영역 */
 .projects a, .project a {
     display: block;
-    padding: 30px;
+    padding: 24px;
     text-decoration: none;
     color: #ffffff;
-    height: 100%;
 }
 
-/* 5. 카드에 마우스를 올렸을 때(Hover) 생동감 넘치는 반응 효과 */
+/* 마우스를 올렸을 때 깔끔하게 반응하는 효과 */
 .projects:hover, .project:hover {
-    transform: translateY(-8px); /* 카드가 위로 슥 올라옴 */
+    background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
-    /* 알록달록 배경과 어우러지는 네온 광채 효과 */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 
-                0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px); /* 위로 살짝 들리는 효과 */
 }
 
-/* 카드 제목 스타일 */
+/* 과제 제목 스타일 */
 .projects strong, .project strong {
     display: block;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #e2e8f0;
-    transition: color 0.2s;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #ffffff;
 }
 
-/* 호버 시 제목 색상이 밝게 빛남 */
-.projects:hover strong, .project:hover strong {
-    color: #6366f1; /* 은은한 네온 블루 퍼플 */
-}
-
-/* 카드 설명글 스타일 */
+/* 과제 설명 글 스타일 */
 .projects p, .project p {
     font-size: 0.95rem;
-    line-height: 1.5;
-    color: #94a3b8;
-}
-
-/* 반응형 레이아웃: 화면이 작은 모바일에서는 1열로 세로 정렬 */
-@media (max-width: 768px) {
-    #projects {
-        grid-template-columns: 1fr;
-    }
+    color: #cbd5e1;
+    line-height: 1.4;
 }
