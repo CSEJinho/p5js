@@ -1,91 +1,47 @@
-/* 1. 기본 여백 초기화 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js 작품 모음</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>백진호의 p5.js 작품</h1>
+        <p>아래 링크를 클릭하여 다양한 p5.js 프로그램을 감상하세요.</p>
+    </header>
 
-/* 2. 전체 배경 - 보내주신 코드 기준에 알록달록 오로라 무빙만 추가 */
-body {
-    font-family: 'Malgun Gothic', sans-serif;
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
+    <section id="projects">
 
-    /* 은은하게 찰랑거리는 알록달록 오로라 배경 */
-    background: linear-gradient(125deg, #2c1a4d, #1a3c5c, #134e4a, #4c1d39);
-    background-size: 400% 400%;
-    animation: auroraBackground 15s ease infinite;
-}
+        <div class="projects">
+            <a href="sample1/index.html">
+                <strong>과제 1. 추상화 그리기</strong>
+                <p>이 프로그램은 창문 속의 밤풍경을 다양한 도형을 통해서 묘사했습니다.</p>        
+            </a>
+        </div>
+        
+        <div class="projects">
+            <a href="sample4/index.html">
+                <strong>과제 4. 추상화에 시간 부여하기</strong>
+                <p>이 프로그램은 달이 지고 해가 뜨는 장면을 연출하였습니다.</p>        
+            </a>
+        </div>
 
-@keyframes auroraBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+        <div class="project">
+            <a href="sample2/index.html">
+                <strong>과제 2. 캐릭터 그리기</strong>
+                <p>이 프로그램은 나의 모습을 다양한 도형을 사용해 그려보았습니다.</p>
+            </a>
+        </div>
 
-/* 3. 상단 헤더 영역 */
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1rem;
-    color: #b3c5d7;
-}
-
-/* 4. 프로젝트 섹션 컨테이너 */
-#projects {
-    width: 100%;
-    max-width: 700px; /* 카드가 너무 퍼지지 않게 잡아주는 안정적인 너비 */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* 카드와 카드 사이의 일정한 간격 */
-}
-
-/* 5. 진호 님 HTML의 .projects와 .project 클래스 모두 깨짐 없이 일치화 */
-.projects, .project {
-    background: rgba(255, 255, 255, 0.07); /* 반투명한 세련된 카드 배경 */
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
-}
-
-/* 카드 내부 링크 및 텍스트 영역 */
-.projects a, .project a {
-    display: block;
-    padding: 24px;
-    text-decoration: none;
-    color: #ffffff;
-}
-
-/* 마우스를 올렸을 때 깔끔하게 반응하는 효과 */
-.projects:hover, .project:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px); /* 위로 살짝 들리는 효과 */
-}
-
-/* 과제 제목 스타일 */
-.projects strong, .project strong {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #ffffff;
-}
-
-/* 과제 설명 글 스타일 */
-.projects p, .project p {
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    line-height: 1.4;
-}
+        <div class="projects">
+            <a href="sample3/index.html">
+                <strong>과제 3. 움직이는 캐릭터 그리기</strong>
+                <p>이 프로그램은 마우스의 움직임에 따라 변화하는 나의 얼굴을 그려보았습니다.</p>        
+            </a>
+        </div>
+        
+    </section>
+</body>
+</html>
