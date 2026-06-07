@@ -6,108 +6,119 @@
     <title>p5.js 작품 모음</title>
     
     <style>
-        /* 기본 여백 초기화 */
+        /* 1. 기본 여백 초기화 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* ★ 더 밝고 역동적인 핫 파스텔 오로라 배경 */
+        /* 2. ★ 아주 밝고 역동적인 오로라 배경 */
         body {
             font-family: 'Malgun Gothic', sans-serif;
-            color: #2c3e50; /* 배경이 밝아졌으므로 글자색을 선명한 다크 톤으로 변경 */
+            color: #2c3e50;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             
-            /* 밝은 핑크, 민트, 퍼플, 시안의 고채도 조합 */
-            background: linear-gradient(125deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb, #e0c3fc);
+            /* 밝고 화사한 컬러 조합 (핑크, 민트, 라벤더, 스카이블루) */
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb, #fbc2eb, #a6c1ee);
             background-size: 300% 300%;
-            /* 움직임 속도를 기존 15초에서 6초로 대폭 줄여서 훨씬 역동적입니다 */
-            animation: dynamicAurora 6s ease-in-out infinite; 
+            /* 5초 주기로 아주 빠르게 넘실거리는 배경 */
+            animation: fastAurora 5s ease-in-out infinite;
         }
 
-        /* 휘몰아치는 역동적인 움직임을 위한 애니메이션 프레임 */
-        @keyframes dynamicAurora {
+        @keyframes fastAurora {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* 상단 헤더 영역 */
+        /* 3. 헤더 타이틀 */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         header h1 {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-            color: #1e293b; /* 대비를 주어 제목이 뚜렷하게 보임 */
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+            font-weight: 900;
+            color: #1e293b;
+            letter-spacing: -1.5px;
         }
 
         header p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: #475569;
             font-weight: 500;
         }
 
-        /* 프로젝트 섹션 컨테이너 */
+        /* 4. ★ 2x2 격자 무늬 레이아웃 설정 */
         #projects {
             width: 100%;
-            max-width: 700px; 
-            display: flex;
-            flex-direction: column;
-            gap: 20px; 
+            max-width: 900px;
+            display: grid;
+            /* 1fr 1fr을 써서 정확히 2열 격자를 만듭니다 */
+            grid-template-columns: 1fr 1fr;
+            gap: 25px; /* 카드 사이 간격 */
         }
 
-        /* 밝은 배경 위에서 글씨가 잘 보이도록 화이트 글래스모피즘(Glassmorphism) 카드 적용 */
+        /* 5. 진호 님 HTML의 클래스(.projects, .project) 디자인 통일 */
         .projects, .project {
-            background: rgba(255, 255, 255, 0.45); /* 하얗고 맑은 반투명 카드 */
-            backdrop-filter: blur(10px); /* 뒤에 지나가는 밝은 오로라를 부드럽게 뭉갬 */
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05); /* 은은하고 맑은 그림자 */
-            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        background-color 0.2s, 
-                        box-shadow 0.2s;
+            background: rgba(255, 255, 255, 0.5); /* 맑은 얼음 같은 느낌 */
+            backdrop-filter: blur(12px); /* 뒤쪽 오로라를 부드럽게 비춤 */
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        background-color 0.3s, 
+                        box-shadow 0.3s;
         }
 
         /* 카드 내부 링크 및 텍스트 */
         .projects a, .project a {
-            display: block;
-            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 35px 25px;
             text-decoration: none;
             color: #334155;
+            height: 100%;
+            text-align: center;
         }
 
-        /* 마우스를 올렸을 때(Hover) 탱글하게 반응하는 효과 */
+        /* 마우스 호버 시 탱글하게 튀어오르는 효과 */
         .projects:hover, .project:hover {
-            background: rgba(255, 255, 255, 0.7);
-            border-color: rgba(255, 255, 255, 0.9);
-            transform: translateY(-4px); /* 위로 살짝 통통 튐 */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            transform: scale(1.03) translateY(-5px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         /* 과제 제목 스타일 */
         .projects strong, .project strong {
             display: block;
-            font-size: 1.25rem;
-            margin-bottom: 8px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: #0f172a;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         /* 과제 설명 글 스타일 */
         .projects p, .project p {
             font-size: 0.95rem;
             color: #475569;
-            line-height: 1.5;
+            line-height: 1.6;
+            word-break: keep-all; /* 한글 단어 깨짐 방지 */
+        }
+
+        /* 모바일 대응: 화면이 아주 작아지면 1열로 변경 */
+        @media (max-width: 650px) {
+            #projects {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
