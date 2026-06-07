@@ -6,14 +6,14 @@
     <title>p5.js 작품 모음</title>
     
     <style>
-        /* 1. 기본 여백 초기화 */
+        /* 기본 여백 초기화 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* 2. ★ 아주 밝고 역동적인 오로라 배경 */
+        /* 밝고 역동적인 오로라 배경 */
         body {
             font-family: 'Malgun Gothic', sans-serif;
             color: #2c3e50;
@@ -23,10 +23,8 @@
             align-items: center;
             padding: 50px 20px;
             
-            /* 밝고 화사한 컬러 조합 (핑크, 민트, 라벤더, 스카이블루) */
             background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb, #fbc2eb, #a6c1ee);
             background-size: 300% 300%;
-            /* 5초 주기로 아주 빠르게 넘실거리는 배경 */
             animation: fastAurora 5s ease-in-out infinite;
         }
 
@@ -36,7 +34,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 3. 헤더 타이틀 */
+        /* 헤더 타이틀 */
         header {
             text-align: center;
             margin-bottom: 50px;
@@ -56,20 +54,19 @@
             font-weight: 500;
         }
 
-        /* 4. ★ 2x2 격자 무늬 레이아웃 설정 */
+        /* 2x2 격자 무늬 레이아웃 설정 */
         #projects {
             width: 100%;
             max-width: 900px;
             display: grid;
-            /* 1fr 1fr을 써서 정확히 2열 격자를 만듭니다 */
             grid-template-columns: 1fr 1fr;
-            gap: 25px; /* 카드 사이 간격 */
+            gap: 25px; 
         }
 
-        /* 5. 진호 님 HTML의 클래스(.projects, .project) 디자인 통일 */
+        /* 진호 님 HTML의 클래스(.projects, .project) 디자인 */
         .projects, .project {
-            background: rgba(255, 255, 255, 0.5); /* 맑은 얼음 같은 느낌 */
-            backdrop-filter: blur(12px); /* 뒤쪽 오로라를 부드럽게 비춤 */
+            background: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(12px); 
             border: 1px solid rgba(255, 255, 255, 0.7);
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -78,19 +75,19 @@
                         box-shadow 0.3s;
         }
 
-        /* 카드 내부 링크 및 텍스트 */
+        /* [수정 포인트] flex-direction 구조와 내부 padding을 조절하여 텍스트를 위로 올립니다 */
         .projects a, .project a {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 35px 25px;
+            justify-content: flex-start; /* 중앙 정렬에서 상단 정렬로 변경 */
+            padding: 45px 25px 35px 25px; /* 상단 패딩을 살짝 늘려 위쪽 기준 안정적인 첫 위치를 잡음 */
             text-decoration: none;
             color: #334155;
             height: 100%;
             text-align: center;
         }
 
-        /* 마우스 호버 시 탱글하게 튀어오르는 효과 */
+        /* 마우스 호버 시 효과 */
         .projects:hover, .project:hover {
             transform: scale(1.03) translateY(-5px);
             background: rgba(255, 255, 255, 0.8);
@@ -101,20 +98,21 @@
         .projects strong, .project strong {
             display: block;
             font-size: 1.3rem;
-            margin-bottom: 12px;
+            margin-bottom: 16px; /* 부제목과의 간격을 조절하는 기준선 */
             color: #0f172a;
             font-weight: 800;
         }
 
-        /* 과제 설명 글 스타일 */
+        /* [수정 포인트] 부제목(설명 글) 위치 상향 및 제목과의 밀착감 조정 */
         .projects p, .project p {
             font-size: 0.95rem;
             color: #475569;
             line-height: 1.6;
-            word-break: keep-all; /* 한글 단어 깨짐 방지 */
+            word-break: keep-all; 
+            margin-top: 0; /* 강제로 위로 밀착시킴 */
         }
 
-        /* 모바일 대응: 화면이 아주 작아지면 1열로 변경 */
+        /* 모바일 대응 */
         @media (max-width: 650px) {
             #projects {
                 grid-template-columns: 1fr;
